@@ -1,0 +1,106 @@
+@import './global.less';
+.app {
+    padding-left: 200px;
+    :global {
+        .ant-layout {
+            height: 100%;
+            position: fixed;
+            width: 100%;
+            left: 0;
+            top: 0;
+            z-index: 77;
+        }
+        .ant-layout-sider {
+            overflow: auto;
+            background: #fff;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 200px;
+            z-index: 88;
+        }
+        .ant-layout-has-sider {
+            padding-left: 200px;
+        }
+        .ant-layout-footer {
+            border-top: 1px solid #ccc;
+            padding: 24px 50px 24px 250px;
+        }
+    }
+    &_header {
+        background: #fff;
+    }
+    &_logo {
+        text-align: center;
+        &_img {
+            width: 138px;
+            height: auto;
+            margin: 20px 0px;
+            cursor: pointer;
+        }
+    }
+    &_container {
+        padding-left: 200px;
+        &_main {
+            width: 1230px;
+            margin: 2% auto;
+        }
+    }
+    &_top {
+        position: fixed;
+        right: 24px;
+        bottom: 40px;
+        height: 48px;
+        width: 48px;
+        z-index: 99;
+        cursor: pointer;
+    }
+    &_footer {
+        height: 60px;
+        &_main {
+            display: flex;
+            width: 1180px;
+            margin: 0 auto;
+            justify-content: space-between;
+            font-size: 12px;
+            list-style: none;
+            padding-left: 0;
+            &_item {
+                span {
+                    cursor: pointer;
+                    margin: 0 6px;
+                    position: relative;
+                }
+                &_weiboEwm {
+                    width: 120px;
+                    height: 134px;
+                    position: absolute;
+                    left: 70.5%;
+                    margin-left: -80px;
+                    bottom: 25px;
+                    z-index: 180;
+                    display: none;
+                }
+                &_weixinEwm {
+                    width: 120px;
+                    height: 134px;
+                    position: absolute;
+                    left: 69%;
+                    margin-left: -80px;
+                    bottom: 25px;
+                    z-index: 180;
+                    display: none;
+                }
+                &_weiboEwmhover:hover &_weiboEwm {
+                    display: block;
+                    z-index: 9999;
+                }
+                &_weixinEwmhover:hover &_weixinEwm {
+                    display: block;
+                    z-index: 9999;
+                }
+            }
+        }
+    }
+}

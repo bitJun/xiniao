@@ -1,0 +1,77 @@
+@import '../global.less';
+.KcOnline {
+    display: inline-block;
+    padding: 30px 30px 14px;
+    cursor: pointer;
+    &_label {
+        color: #33CCD3;
+        height: 18px;
+    }
+    &_title {
+        color: #333333;
+        margin: 10px 0;
+    }
+    &_time {
+        color: #999999;
+        margin-top: 0;
+        font-size: 14px;
+    }
+    &_list {
+        display: flex;
+        width: 314px;
+        overflow: hidden;
+        &_item {
+            display: inline-block;
+            &_main {
+                margin: 0 6px;
+                &_img {
+                    width: 95px;
+                    height: 121px;
+                    vertical-align: bottom;
+                }
+                &_nickname {
+                    margin-bottom: 20px;
+                    width: 95px;
+                    font-size: 12px;
+                    background: #33CCD3;
+                    color: #ffffff;
+                    border-radius: 20px;
+                    text-align: center;
+                    padding: 4px;
+                }
+            }
+        }
+    }
+    &_saleInfo {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid #E5E5E5;
+        padding-top: 20px;
+        align-items: center;
+        &_main {
+            color: #999999;
+            font-size: 14px;
+            span {
+                color: #33CCD3
+            }
+        }
+        &_price {
+            color: #E6213A;
+            font-weight: bold;
+            font-size: 14px;
+            span {
+                font-size: 24px;
+            }
+        }
+        &_free {
+            color: #E6213A;
+            span {
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+.KcOnline:nth-child(3n) {
+    margin-right: 0;
+}

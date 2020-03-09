@@ -1,0 +1,78 @@
+@import '../global.less';
+.class_view {
+    &_plateslist {
+        :global {
+            .ant-tabs-top-bar {
+                padding-left: 0;
+                padding-right: 60px;
+            }
+            .ant-tabs-nav .ant-tabs-tab {
+                height: 60px;
+                line-height: 60px;
+                padding: 0 20px;
+                font-size: 18px;
+                margin: 0;
+                font-weight: 500;
+                color: #a2a2a2;
+            }
+            .ant-tabs-nav .ant-tabs-tab:first-child {
+                padding-left: 0;
+            }
+            .ant-tabs-nav .ant-tabs-tab-active {
+                color: @black;
+            }
+            .ant-tabs-ink-bar {
+                height: 2px;
+                background-color :#33ccd3;
+            }
+        }
+    }
+    &_taglists {
+        :global {
+            .ant-tabs-top-bar {
+                padding-right: 60px;
+            }
+            .ant-tabs-nav .ant-tabs-tab {
+                height: 28px;
+                line-height: 28px;
+                margin-right: 5px;
+                padding: 0 15px;
+                text-align: center;
+                border-radius: 20px;
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+            .ant-tabs-nav .ant-tabs-tab:first-child {
+                padding-left: 15px;
+            }
+            .ant-tabs-nav .ant-tabs-tab-active {
+                border: 1px solid #33ccd3;
+                color: #fff;
+                background: #33ccd3
+            }
+            .ant-tabs-ink-bar {
+                display: none !important;
+            }
+            .ant-tabs-bar {
+                border-bottom: 0;
+            }
+        }
+    }
+    &_list {
+        margin: 1% auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        &_item {
+            display: inline-block;
+            width: 32%;
+            background: @white;
+            margin-bottom: 2%;
+            height: 363px;
+            overflow: hidden;
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+        }
+    }
+}

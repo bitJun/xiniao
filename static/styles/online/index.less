@@ -1,0 +1,166 @@
+@import '../global.less';
+.online_view {
+    &_platelist {
+        margin-bottom: 35px;
+        &_app {
+            width: 30%;
+            background: @white;
+            height: 139px;
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            position: relative;
+            padding-left: 120px;
+            &_title {
+                width: 100px;
+                font-weight: 700;
+                text-align: center;
+                color: @black;
+                height: 139px;
+                line-height: 139px;
+                position: absolute;
+                left: 20px;
+                top: 0;
+            }
+            &_list {
+                &_item {
+                    width: 50%;
+                    text-align: center;
+                    margin-top: 24px;
+                    &_img {
+                        width: 60px;
+                        height: 60px;
+                        margin-bottom: 10px;
+                    }
+                    &_name {
+                        color: #3e3a39;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        &_wechat {
+            width: 68%;
+            background: @white;
+            height: 139px;
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            position: relative;
+            padding-left: 120px;
+            &_title {
+                width: 100px;
+                font-weight: 700;
+                text-align: center;
+                color: @black;
+                height: 139px;
+                line-height: 139px;
+                position: absolute;
+                left: 20px;
+                top: 0;
+            }
+            &_list {
+                &_item {
+                    width: 25%;
+                    text-align: center;
+                    margin-top: 24px;
+                    &_img {
+                        width: 60px;
+                        height: 60px;
+                        margin-bottom: 10px;
+                    }
+                    &_name {
+                        color: #3e3a39;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    &_main {
+        background: @white;
+        padding-top: 35px;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        &_section {
+            width: 1169px;
+            margin: 0 auto;
+            &_header {
+                font-size: 36px;
+                padding-top: 35px;
+                padding-bottom: 10px;
+                text-align: center;
+                &_version {
+                    font-size: 14px;
+                    color: @gray6;
+                    margin-top: 35px;
+                }
+            }
+            &_container {
+                width: 100%;
+                position: relative;
+                height: 560px;
+                &_bannerImg {
+                    width: 1169px;
+                    height: 560px;
+                }
+                &_swipers {
+                    width: 1169px;
+                    height: 560px;
+                    &_img {
+                        width: 1169px;
+                        height: 560px;
+                    }
+                }
+                &_desc,
+                &_desc1 {
+                    width: 50%;
+                    height: 100%;
+                    background: #ffffff;
+                    position: absolute;
+                    top: 0;
+                    z-index: 999;
+                    &_livemain {
+
+                        &_img {
+                            width: 160px;
+                            height: 160px;
+                            img {
+                                width: 160px;
+                                height: 160px;
+                            }
+                        }
+                        &_title {
+                            font-size: 14px;
+                            color: #33ccd3;
+                            margin-top: 10px;
+                        }
+                        &_content {
+                            font-size: 16px;
+                            color: #444;
+                            margin-top: 60px;
+                            line-height: 30px;
+                        }
+                    }
+                }
+                &_desc {
+                    left: 0;
+                    &_livemain {
+                        left: 70px;
+                    }
+                }
+                &_desc1 {
+                    right: 70px;
+                    width: 405px;
+                    &_img {
+                        left: 50%;
+                    }
+                    &_title {
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

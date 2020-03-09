@@ -1,0 +1,53 @@
+@import '../global.less';
+.GkkItem {
+    width: 214px;
+    height: 215px;
+    background-color: #fff;
+    margin-right: 24px;
+    margin-top: 10px;
+    text-align: center;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -webkit-transition: box-shadow .2s ease-out;
+    -webkit-transition: -webkit-box-shadow .2s ease-out;
+    transition: -webkit-box-shadow .2s ease-out;
+    transition: box-shadow .2s ease-out;
+    transition: box-shadow .2s ease-out,-webkit-box-shadow .2s ease-out;
+    cursor: pointer;
+    &_cover {
+        width: 214px;
+        border-radius: 10px 10px 0 0;
+        height: 134px;
+        object-fit: cover;
+    }
+    &_title {
+        overflow: hidden;
+        word-break: break-all;
+        height: 40px;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        color: #333;
+        font-size: 14px;
+        line-height: 20px;
+        padding: 0 11px;
+        margin-top: 10px;
+        text-align: left;
+    }
+    &_time {
+        text-align: left;
+        padding: 0 11px;
+        img {
+            vertical-align: middle;
+            width: 13px;
+            margin-bottom: 2px;
+            height: 13px;
+            color: #9AABB8;
+        }
+    }
+}
+.GkkItem:last-child {
+    margin-right: 0;
+}

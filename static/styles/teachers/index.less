@@ -1,0 +1,84 @@
+@import '../global.less';
+.teachers_view {
+    width: 1169px;
+    margin: 0 auto;
+    &_tabs {
+        margin-bottom: 15px;
+        &_item {
+            float: left;
+            margin-right: 20px;
+            padding: 0 20px;
+            border-radius: 20px;
+            -moz-border-radius: 20px;
+            -webkit-border-radius: 20px;
+            height: 40px;
+            box-sizing: border-box;
+            line-height: 40px;
+            display: inline-block;
+            list-style: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: #303133;
+            cursor: pointer;
+        }
+        &_item.active {
+            border: 1px solid #33ccd3;
+            color: #33ccd3;
+            font-weight: 700;
+        }
+    }
+    &_list {
+        background: @white;
+        padding: 50px;
+        &_item {
+            position: relative;
+            height: 264px;
+            padding: 50px 80px;
+            img {
+                width: 18%;
+                top: 50px;
+                position: absolute;
+            }
+            &_content {
+                width: 666px;
+                top: 50px;
+                position: absolute;
+                &_intro {
+                    color: @black;
+                    margin-bottom: 10%;
+                    &_name {
+                        border-bottom: 3px solid #33CCD3;
+                        padding-bottom: 10px;
+                        b {
+                            font-size: 20px;
+                            font-weight: bolder;
+                        }
+                    }
+                    &_nickname {
+                        font-size: 20px;
+                        font-weight: bolder;
+                    }
+                }
+            }
+        }
+        &_item.oldItem {
+            background: #f9fafc;
+            display: block;
+            img {
+                right: 80px !important;
+            }
+            .teachers_view_list_item_content {
+                left: 80px;
+            }
+        }
+        &_item.thirdItem {
+            display: block;
+            img {
+                left: 80px;
+            }
+            .teachers_view_list_item_content {
+                right: 80px;
+            }
+        }
+    }
+}

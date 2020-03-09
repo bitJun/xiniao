@@ -1,0 +1,137 @@
+@import '../global.less';
+.ziliao_view {
+    width: 1169px;
+    background: @white;
+    position: relative;
+    &_search {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 368px;
+        height: 43px;
+        z-index: 999;
+        :global {
+            .ant-input {
+                width: 368px;
+                height: 43px;
+                border-radius: 30px;
+                border: 1px solid rgb(154, 171, 184);
+                padding: 12px 26px;
+                outline: none;
+                background: transparent;
+            }
+            .ant-input-search {
+                width: 368px !important;
+            }
+        }
+    }
+    &_newprojectslist,
+    &_plateslist {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        padding-left: 40px;
+        margin-bottom: 15px;
+        &_item {
+            margin-right: 5px;
+            padding: 0 20px;
+            border-radius: 20px;
+            color: #999;
+            font-size: 16px;
+            height: 28px;
+            line-height: 28px;
+            cursor: pointer;
+        }
+        &_item.active {
+            background: #33ccd3;
+            color: #fff;
+        }
+    }
+    &_main {
+        padding: 1% 0px 1% 1%;
+        &_list {
+            width: 815px;
+            &_item {
+                padding: 20px;
+                margin-left: 2%;
+                height: 135px;
+                position: relative;
+                border-bottom: 1px solid #e1e7eb!important;
+                border: 2px solid transparent;
+                &_img {
+                    position: absolute;
+                    left: 20px;
+                    top: 20px;
+                    width: 161px;
+                    height: 86px;
+                }
+                &_content {
+                    &_title {
+                        font-weight: bold;
+                        color: rgb(43, 62, 80);
+                        font-size: 20px;
+                    }
+                    &_desc {
+                        height: 16px;
+                        line-height: 16px;
+                        font-size: 14px;
+                        color: #849191;
+                    }
+                    &_time {
+                        font-size: 12px;
+                        height: 40px;
+                        line-height: 40px;
+                        color: rgb(189, 189, 189);
+                        img {
+                            vertical-align: middle;
+                            margin-bottom: 2px;
+                            width: 12px;
+                            height: 12px;
+                        }
+                    }
+                }
+            }
+            &_item.showimg {
+                padding-left: 191px;
+            }
+            &_item:hover {
+                cursor: pointer;
+                border: 2px solid #33ccd3;
+                border-bottom: 2px solid #33ccd3!important;
+            }
+        }
+        &_banners {
+            width: 299px;
+            margin-top: 20px;
+            margin-right: 20px;
+            img {
+                width:299px;
+                height:150px;
+                margin-bottom: 20px;
+                border-radius: 6px;
+                -moz-border-radius: 6px;
+                -webkit-border-radius: 6px;
+            }
+        }
+    }
+}
+.status1 {
+    color: #33ccd3;
+    margin-left: 210px;
+}
+.status2 {
+    color: #bdbdbd;
+    margin-left: 210px;
+}
+.status3 {
+    color: #e6213a;
+    margin-left: 210px;
+}
+.status4 {
+    color: #e6213a;
+    margin-left: 210px;
+}
+.status5 {
+    color: #bdbdbd;
+    margin-left: 210px;
+}
