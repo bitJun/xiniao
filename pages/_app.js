@@ -22,6 +22,31 @@ export default class MyApp extends App {
     constructor (props) {
         super(props);
     }
+    handleRoute = (url) => {
+
+        const ua = navigator.userAgent;
+        if (ua.match(/iphone|ipod/ig) && ua.match(/MicroMessenger/ig)) {
+          // window.location.reload();
+        }
+    }
+    componentDidMount() {
+        Router.events.on('routeChangeComplete', this.handleRoute);
+        let _hmt = _hmt || [];
+        (function(w, d, n, a, j) {
+            let hm = document.createElement('script');
+            hm.src = 'https://cdn.jsdelivr.net/npm/eruda';
+            w[n] = w[n] || function () {
+                return (w[n].a = w[n].a || []).push(arguments)
+            };
+            j = d.createElement('script');
+            j.async = true;
+            j.src = 'https://qiyukf.com/script/8dcfd5a9f9ae2d6448afedac9090773b.js?hiddden=1';
+            d.body.appendChild(j);
+        })(window, document, 'ysf');
+    }
+    componentWillUnmount() {
+        Router.events.off('routeChangeComplete', this.handleRoute);
+    }
     setsource() {
         Router.push({
             pathname: '/external-link/source'
@@ -46,6 +71,11 @@ export default class MyApp extends App {
         if (typeof window == 'object') {
             window.location.href = 'https://www.imtudo.com/'
         }
+    }
+    kefu() {
+        ysf('open', {
+            templateId: '6167009'
+        })
     }
     render () {
         const {Component, pageProps} = this.props;
@@ -161,6 +191,10 @@ export default class MyApp extends App {
                     </Layout>
                     <BackTop />
                     <img src="/static/images/shang.png" className={styles['app_top']} />
+                    <div className={styles['app_kehu']} onClick={this.kefu}>
+                        <img src="/static/images/kefu1.png" className={styles['app_kehu_img1']} />
+                        <img src="/static/images/kefu0.png" className={styles['app_kehu_img2']} />
+                    </div>
                 </Layout>
             </div>
         )
