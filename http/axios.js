@@ -34,7 +34,7 @@ axios.interceptors.request.use(
             window.localStorage.getItem('token')
         ) {
             config.headers.token = `${window.localStorage.getItem('token')}`;
-        }
+				}
         return config;
     },
     err => {
@@ -46,7 +46,6 @@ axios.interceptors.request.use(
  * 响应拦截&错误处理 暂不处理
  */
 axios.interceptors.response.use(response => {
-    console.log('caonima', response);
     if (response.code) {
         if (response.code === 201 || response.code === 202 || response.code === 203) {
             Router.replace({

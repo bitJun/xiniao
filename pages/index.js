@@ -308,7 +308,7 @@ export default class Index extends Component {
                                 <div className={styles['index_view_xibanqiu_main_vedios_title']}>
                                     明星打CALL
                                 </div>
-                                <div className={styles['more']}>
+                                <div className={styles['more']} onClick={this.goMore.bind(this, '/xibanqiu')}>
                                     更多
                                     <img className={styles['mustright']} src="/static/images/gengduo.png" alt=""></img>
                                 </div>
@@ -335,7 +335,7 @@ export default class Index extends Component {
                                     <div className={styles['index_view_xibanqiu_main_jianghu_header_title']}>
                                         公考浆糊
                                     </div>
-                                    <div className={styles['more']}>
+                                    <div className={styles['more']} onClick={this.goMore.bind(this, '/xibanqiu')}>
                                         更多
                                         <img className={styles['mustright']} src="/static/images/gengduo.png" alt="" />
                                     </div>

@@ -77,6 +77,14 @@ export default class MyApp extends App {
             templateId: '6167009'
         })
     }
+    goLink = (url, e) => {
+        Router.push({
+            pathname: url
+        })
+    }
+    goToTop = (e) => {
+
+    }
     render () {
         const {Component, pageProps} = this.props;
         return (
@@ -96,10 +104,8 @@ export default class MyApp extends App {
                             <img className={styles['app_logo_img']} src='/static/images/icon_login.png'/>
                         </div>
                         <Menu theme="light" mode="inline">
-                            <Menu.Item key="1">
-                                <Link href="/">
-                                    <a>首页</a>
-                                </Link>
+                            <Menu.Item key="1" onClick={this.goLink.bind(this, '/')}>
+                                <a>首页</a>
                             </Menu.Item>
                             <SubMenu
                                 key="2"
@@ -190,7 +196,7 @@ export default class MyApp extends App {
                         </Footer>
                     </Layout>
                     <BackTop />
-                    <img src="/static/images/shang.png" className={styles['app_top']} />
+                    <img src="/static/images/shang.png" className={styles['app_top']} onClick={this.goToTop.bind(this)}/>
                     <div className={styles['app_kehu']} onClick={this.kefu}>
                         <img src="/static/images/kefu1.png" className={styles['app_kehu_img1']} />
                         <img src="/static/images/kefu0.png" className={styles['app_kehu_img2']} />

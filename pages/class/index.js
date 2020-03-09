@@ -31,7 +31,7 @@ const params = {
 const optionss = {
     campus_id: 0,
     project_id: 0,
-    lable_id: '',
+    lable_id: 0,
     get_lable: 1,
     pagesize: 18,
     timestamp: ''
@@ -40,12 +40,14 @@ export default class Class extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            taglists: null,
-            menulist: null,
-            plates: null,
-            len: null,
-            activeName2: null
+            taglists: props.taglists || null,
+            menulist: props.menulist || null,
+            plates: props.plates || null,
+            len: props.len || null,
+            activeName2: props.activeName2 || null
         }
+        this.changePlates = this.changePlates.bind(this);
+        this.changeTaglists = this.changeTaglists.bind(this);
     }
     static async getInitialProps({ req }) {
         const timestamp = Math.floor(new Date().getTime()/1000);
@@ -75,13 +77,6 @@ export default class Class extends Component{
             plates = json.data.project
             len = json.data.data.data.length
         } else {
-            const optionss = {
-                campus_id: this.campus_id,
-                project_id: this.tab1,
-                lable_id: this.lable_id,
-                get_lable: 1,
-                timestamp: timestamp
-            }
             json = await branchRecommendv2(optionss);
             taglists = json.data.lables
             menulist = json.data.data.data
@@ -100,31 +95,39 @@ export default class Class extends Component{
         const timestamp = Math.floor(new Date().getTime()/1000);
         params.timestamp = timestamp;
         params.project_id = key;
-        let { data } = await branchRecommendv2(params);
-        let taglist = data.lables;
-        optionss.timestamp = timestamp;
         optionss.project_id = key;
-        optionss.lable_id = taglist[0].cl_id;
-        let json = await branchRecommendv2(optionss);
-        console.log('json', json);
-    }
-    changeTaglists (key) {
-        console.log('key1', key);
-    }
-    componentDidMount() {
-        const {
-            taglists,
-            menulist,
-            plates,
-            len,
-            activeName2
-        } = this.props;
+        let { data } = await branchRecommendv2(params);
+        let json;
+        let taglists = null;
+        let menulist = null;
+        let plates = null;
+        let len = null;
+        let activeName2 = null;
+        optionss.lable_id = data.lables[0].cl_id;
+        json = await branchRecommendv2(optionss);
+        taglists = json.data.lables;
+        menulist = json.data.data.data;
+        plates = json.data.project;
+        len = json.data.data.data.length;
         this.setState({
             taglists,
             menulist,
             plates,
             len,
+            activeName2
         })
+    }
+    async changeTaglists (key) {
+        const timestamp = Math.floor(new Date().getTime()/1000);
+        params.timestamp = timestamp;
+        params.lable_id = key;
+        let { data } = await branchRecommendv2(params);
+        this.setState({
+            menulist: data.data.data,
+            len: data.data.data.length
+        })
+    }
+    componentDidMount() {
     }
     render () {
         const {
