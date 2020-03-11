@@ -1,0 +1,104 @@
+@import '../global.less';
+.class_detail {
+    &_banner {
+        height: 150px;
+        overflow: hidden;
+        img {
+            width: 679px;
+            height: 304px;
+            float: right;
+        }
+    }
+    &_section {
+        width: 1200px;
+        padding: 50px;
+        margin: 0 auto;
+        background: @white;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        margin-bottom: 1%;
+        display: flex;
+        &_classImg {
+            height: 275px;
+            width: 491px;
+            img {
+                width: 491px;
+                height: 275px;
+            }
+        }
+        &_classBaseInfo {
+            width: 521px;
+            margin-left: 50px;
+            &_coursename {
+                font-size: 28px;
+                color: rgb(51, 51, 51);
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+            &_label {
+                color: rgb(153, 153, 153);
+                margin-bottom: 20px;
+                span {
+                    margin-right: 20px;
+                }
+            }
+            &_remain {
+                color: #FCC80D;
+                font-weight: bold;
+            }
+            &_price {
+                display: flex;
+                margin-top: 90px;
+                align-items: center;
+                &_main {
+                    color: red;
+                    font-weight: bold;
+                    width: 150px;
+                    img {
+                        width: 18px;
+                        height: 20px;
+                        margin-right: 10px;
+                    }
+                    span {
+                        font-size: 36px;
+                    }
+                    &_saleInfo {
+                        color: #999999;
+                        font-size: 14px;
+                        span {
+                            font-size: 14px;
+                            font-weight: normal;
+                        }
+                    }
+                }
+                &_btn {
+                    display: flex;
+                    justify-content: flex-end;
+                    margin-left: 60px;
+                    width: 312px;
+                    &_btns {
+                        width: 146px;
+                        height: 49px;
+                        text-align: center;
+                        border-radius: 25px;
+                        color: #fff;
+                        display: grid;
+                        -webkit-box-align: center;
+                        -ms-flex-align: center;
+                        align-items: center;
+                        font-size: 14px;
+                    }
+                    &_in {
+                        background: #33CCD3;
+                        cursor:pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+.red {
+    background: #F5F5F5;
+    color: #99a9bf;
+}

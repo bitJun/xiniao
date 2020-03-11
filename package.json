@@ -4,19 +4,14 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "dev": "node server.js && npm lint",
+        "dev": "node server.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "next build",
         "start": "cross-env NODE_ENV=production node server.js",
         "build-test": "cross-env NODE_ENV=test next build",
         "build-prod": "cross-env NODE_ENV=production next build",
-        "lint": "eslint ./pages",
-        "lintfix": "eslint ./pages --fix",
-        "pm2": "pm2 start app.js"
+        "pm2": "pm2 start server.js"
     },
-    "pre-commit": [
-        "lint"
-    ],
     "dependencies": {
         "@types/store": "^2.0.1",
         "@zeit/next-less": "^1.0.1",
@@ -50,15 +45,19 @@
         "next": "^9.1.3",
         "next-compose-plugins": "^2.2.0",
         "next-optimized-images": "^1.4.1",
+        "next-redux-saga": "^4.1.2",
+        "next-redux-wrapper": "^5.0.0",
         "nprogress": "^0.2.0",
         "pre-commit": "^1.2.2",
         "rc-form": "^2.4.4",
         "react": "^16.8.3",
         "react-dom": "^16.8.3",
         "react-pdf": "^4.1.0",
-        "react-redux": "^7.0.3",
+        "react-redux": "^7.2.0",
         "react-sticky": "^6.0.3",
-        "redux": "^4.0.1",
+        "redux": "^4.0.5",
+        "redux-logger": "^3.0.6",
+        "redux-saga": "^1.1.3",
         "redux-thunk": "^2.3.0",
         "store": "^2.0.12",
         "url-loader": "^1.1.2",

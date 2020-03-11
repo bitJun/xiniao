@@ -69,7 +69,7 @@ export default class Class extends Component{
                 lable_id = taglist[0].cl_id
                 activeName2 = '0';
             }
-            optionss.lable_id = lable_id;
+            optionss.lable_id = Number(lable_id);
             optionss.timestamp = timestamp;
             json = await branchRecommendv2(optionss);
             taglists = json.data.lables
@@ -91,41 +91,49 @@ export default class Class extends Component{
             activeName2
         }
     }
-    async changePlates (key) {
+    changePlates (key) {
         const timestamp = Math.floor(new Date().getTime()/1000);
         params.timestamp = timestamp;
         params.project_id = key;
         optionss.project_id = key;
-        let { data } = await branchRecommendv2(params);
-        let json;
-        let taglists = null;
-        let menulist = null;
-        let plates = null;
-        let len = null;
-        let activeName2 = null;
-        optionss.lable_id = data.lables[0].cl_id;
-        json = await branchRecommendv2(optionss);
-        taglists = json.data.lables;
-        menulist = json.data.data.data;
-        plates = json.data.project;
-        len = json.data.data.data.length;
-        this.setState({
-            taglists,
-            menulist,
-            plates,
-            len,
-            activeName2
-        })
+        branchRecommendv2(params)
+            .then(res=>{
+                let { data } = res;
+                let json;
+                let taglists = null;
+                let menulist = null;
+                let plates = null;
+                let len = null;
+                let activeName2 = null;
+                optionss.lable_id = data.lables[0].cl_id;
+                branchRecommendv2(optionss)
+                    .then(json =>{
+                        taglists = json.data.lables;
+                        menulist = json.data.data.data;
+                        plates = json.data.project;
+                        len = json.data.data.data.length;
+                        this.setState({
+                            taglists,
+                            menulist,
+                            plates,
+                            len,
+                            activeName2
+                        });
+                    })
+            })
     }
-    async changeTaglists (key) {
+    changeTaglists (key) {
         const timestamp = Math.floor(new Date().getTime()/1000);
         params.timestamp = timestamp;
         params.lable_id = key;
-        let { data } = await branchRecommendv2(params);
-        this.setState({
-            menulist: data.data.data,
-            len: data.data.data.length
-        })
+        branchRecommendv2(params)
+            .then(res=>{
+                const { data } = res;
+                this.setState({
+                    menulist: data.data.data,
+                    len: data.data.data.length
+                })
+            })
     }
     componentDidMount() {
     }
@@ -136,6 +144,9 @@ export default class Class extends Component{
             plates,
             len
         } = this.state;
+        console.log('params', params);
+        console.log('optionss', optionss);
+        console.log('menulist', menulist);
         return (
             <div className={styles['class_view']}>
                 <Head

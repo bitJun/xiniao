@@ -8,6 +8,16 @@ const handle = app.getRequestHandler()
 app.prepare()
     .then(() => {
         const server = express();
+        server.get('/class/:id', (req, res) => {
+            const actualPage = '/class/detail'
+            const queryParams = { id: req.params.id }
+            app.render(req, res, actualPage, queryParams)
+        });
+        server.get('/gkbaike/:id', (req, res) => {
+            const actualPage = '/gkbaike/detail'
+            const queryParams = { id: req.params.id }
+            app.render(req, res, actualPage, queryParams)
+        });
         server.get('/ziliao/:id', (req, res) => {
             const actualPage = '/ziliao/detail'
             const queryParams = { id: req.params.id }
@@ -15,6 +25,16 @@ app.prepare()
         });
         server.get('/xiniao/:id', (req, res) => {
             const actualPage = '/xiniao/detail'
+            const queryParams = { id: req.params.id }
+            app.render(req, res, actualPage, queryParams)
+        });
+        server.get('/hunan', (req, res) => {
+            const actualPage = '/school'
+            const queryParams = { id: req.params.id }
+            app.render(req, res, actualPage, queryParams)
+        });
+        server.get('/shandong', (req, res) => {
+            const actualPage = '/school'
             const queryParams = { id: req.params.id }
             app.render(req, res, actualPage, queryParams)
         });

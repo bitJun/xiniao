@@ -62,10 +62,10 @@
         margin: 1% auto;
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
         &_item {
             display: inline-block;
             width: 32%;
+            margin-right: 2%;
             background: @white;
             margin-bottom: 2%;
             height: 363px;
@@ -73,6 +73,9 @@
             border-radius: 10px;
             -moz-border-radius: 10px;
             -webkit-border-radius: 10px;
+        }
+        &_item:nth-child(3n) {
+            margin-right: 0;
         }
     }
 }

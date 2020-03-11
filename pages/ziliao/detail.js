@@ -163,7 +163,7 @@ export default class ZiliaoDetail extends Component{
                         <div className={styles['zldetail_view_numbers_right']}>
                             {
                                 banners.length && banners.map(item=>
-                                    <div className={styles['zldetail_view_numbers_right_item']} key={index.img_url}>
+                                    <div className={styles['zldetail_view_numbers_right_item']} key={item.img_url}>
                                         <img
                                             className={styles['zldetail_view_numbers_right_item_img']}
                                             src={item.img_url}

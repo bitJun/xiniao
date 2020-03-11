@@ -15,10 +15,19 @@ export default class KcOnline extends Component {
         let end = TranslateFullTime(end_time);
         return `${start} - ${end}`;
     }
+    showdetail = (id, e) => {
+        Router.push(
+            {
+                pathname: '/class/detail',
+                query: { id: id }
+            },
+            `/class/${id}.html`
+        )
+    }
     render () {
         const { data } = this.props;
         return (
-            <div className={styles.KcOnline}>
+            <div className={styles.KcOnline} onClick={this.showdetail.bind(this, data.relate_id)}>
                 <div className={styles['KcOnline_label']}>{data.label_str}</div>
                 <h2 className={styles['KcOnline_title']}>{data.title}</h2>
                 {
