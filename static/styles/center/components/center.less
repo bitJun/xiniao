@@ -1,0 +1,40 @@
+@import '../../global.less';
+.SelfCenter {
+    background: @white;
+    padding-left: 50px;
+    height: 600px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    h2 {
+        color: rgb(51, 51, 51);
+        font-size: 16px;
+        height: 50px;
+        line-height: 50px;
+        padding: 10px;
+    }
+    &_info {
+        background: @white;
+        &_base {
+            width: 660px;
+        }
+        &_logo {
+            width: 270px;
+            margin-right: 15%;
+            &_show {
+                padding: 20px;
+                img {
+                    width: 250px;
+                    height: 250px;
+                    border-radius: 50%;
+                    -moz-border-radius: 50%;
+                    -webkit-border-radius: 50%;
+                }
+            }
+            &_change {
+                margin-top: 20px;
+                text-align: center;
+            }
+        }
+    }
+}

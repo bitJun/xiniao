@@ -2,4 +2,35 @@
 .center_view {
     width: 1169px;
     margin: 0 auto;
+    :global {
+        .ant-tabs-nav-container {
+            height: 68px;
+            background: @white;
+            border-radius: 10px;
+            -moz-border-radius: 10px;
+            -webkit-border-radius: 10px;
+            display: flex;
+        }
+        .ant-tabs-top-bar {
+            height: 68px;
+            line-height: 68px;
+            padding: 0 20px;
+        }
+        .ant-tabs-nav .ant-tabs-tab {
+            height: 68px;
+            line-height: 68px;
+            padding: 0 20px;
+            font-size: 18px;
+            margin: 0;
+            font-weight: 500;
+            color: #a2a2a2;
+        }
+        .ant-tabs-nav .ant-tabs-tab-active {
+            color: @black;
+        }
+        .ant-tabs-ink-bar {
+            height: 6px;
+            background-color :#33ccd3;
+        }
+    }
 }

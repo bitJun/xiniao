@@ -1,0 +1,44 @@
+@import '../../global.less';
+.msg_view {
+    width: 1169px;
+    &_tabs {
+        height: 60px;
+        background: @white;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        margin-bottom: 15px;
+        display: flex;
+        list-style: none;
+        &_item {
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            width: 33.33%;
+            color: #303133;
+            cursor: pointer;
+        }
+        &_item.active {
+            color: #33ccd3;
+            border-bottom: 5px solid #33ccd3;
+        }
+    }
+    &_empty {
+        background: @white;
+        height: 550px;
+        padding: 54px 77px;
+        text-align: center;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        img {
+            width: 25%;
+            margin-top: 6%;
+        }
+        &_tip {
+            color: rgb(168, 168, 168);
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    }
+}

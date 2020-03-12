@@ -1,0 +1,44 @@
+@import '../../global.less';
+.exchange_view {
+    width: 1169px;
+    height: 400px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    padding-top: 44px;
+    text-align: center;
+    background: @white;
+    &_input {
+        width: 510px;
+        margin: 0 auto 10px auto;
+        :global {
+            .ant-input {
+                background-color: #fafafa;
+                height: 40px;
+                line-height: 40px;
+            }
+        }
+    }
+    &_tip {
+        font-size: 14px;
+        color: #6d6d6d;
+        img {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+    }
+    &_duihuan {
+        border-radius: 24px;
+        background: #CFCFCF;
+        width: 254px;
+        height: 48px;
+        margin: 60px auto;
+        line-height: 48px;
+        color: @white;
+    }
+}
+.green {
+    background: #33CCD3;
+}

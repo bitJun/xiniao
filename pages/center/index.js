@@ -28,39 +28,48 @@ export default class Center extends Component {
             tablist: [
                 {
                     name: '个人资料',
-                    id: '0'
+                    id: '0',
+                    component: <SelfCenter />
                 },
                 {
                     name: '我的课程',
-                    id: '1'
+                    id: '1',
+                    component: <Cechen />
                 },
                 {
                     name: '我的订单',
-                    id: '2'
+                    id: '2',
+                    component: <Order />
                 },
                 {
                     name: '我的收藏',
-                    id: '3'
+                    id: '3',
+                    component: <Collect />
                 },
                 {
                     name: '我的地址',
-                    id: '4'
+                    id: '4',
+                    component: <Address />
                 },
                 {
                     name: '我的优惠券',
-                    id: '5'
+                    id: '5',
+                    component: <Coupons />
                 },
                 {
                     name: '账户与安全',
-                    id: '6'
+                    id: '6',
+                    component: <Safe />
                 },
                 {
                     name: '我的兑换',
-                    id: '7'
+                    id: '7',
+                    component: <Exchange />
                 },
                 {
                     name: '消息中心',
-                    id: '8'
+                    id: '8',
+                    component: <Msg />
                 }
             ],
             key: null
@@ -98,7 +107,7 @@ export default class Center extends Component {
                     {
                         tablist.map(item=>
                             <TabPane tab={item.name} key={item.id}>
-
+                                {item.component}
                             </TabPane>
                         )
                     }
