@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Provider } from 'react-redux';
 import Router from 'next/router';
 import TopBar from '../components/TopBar';
+import MyIcon from '../components/MyIcon';
 import store from '../redux/store';
 import {
     Layout,
@@ -109,13 +110,16 @@ export default class MyApp extends App {
                             </div>
                             <Menu theme="light" mode="inline">
                                 <Menu.Item key="1" onClick={this.goLink.bind(this, '/')}>
-                                    <a>首页</a>
+                                    <a>
+                                        <MyIcon type="i-dashboard" />
+                                        首页
+                                    </a>
                                 </Menu.Item>
                                 <SubMenu
                                     key="2"
                                     title={
                                         <span>
-                                            {/* <Icon type="mail" /> */}
+                                            <MyIcon type="i-school" />
                                             <span>分校</span>
                                         </span>
                                     }
@@ -133,32 +137,46 @@ export default class MyApp extends App {
                                 </SubMenu>
                                 <Menu.Item key="5">
                                     <Link href="/class">
-                                        <a>课程</a>
+                                        <a>
+                                            <MyIcon type="i-class" />课程
+                                        </a>
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item key="6">
                                     <Link href="/ziliao">
-                                        <a>资料</a>
+                                        <a>
+                                            <MyIcon type="i-ziliao" />
+                                            资料
+                                        </a>
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item key="7">
                                     <Link href="/gkbaike">
-                                        <a>公考百科</a>
+                                        <a>
+                                            <MyIcon type="i-gkbk" />
+                                            公考百科
+                                        </a>
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item key="8">
                                     <Link href="/teachers">
-                                        <a>师资</a>
+                                        <a>
+                                            <MyIcon type="i-teacher" />师资
+                                        </a>
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item key="9">
                                     <Link href="/xibanqiu">
-                                        <a>犀半球</a>
+                                        <a>
+                                            <MyIcon type="i-xibanqiu" />犀半球
+                                        </a>
                                     </Link>
                                 </Menu.Item>
                                 <Menu.Item key="10">
                                     <Link href="/online">
-                                        <a>移动学习</a>
+                                        <a>
+                                            <MyIcon type="i-online" />移动学习
+                                        </a>
                                     </Link>
                                 </Menu.Item>
                             </Menu>
