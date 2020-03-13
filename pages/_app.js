@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { Provider } from 'react-redux';
 import Router from 'next/router';
 import TopBar from '../components/TopBar';
-
 import store from '../redux/store';
 import {
     Layout,

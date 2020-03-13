@@ -25,16 +25,34 @@ import {
 } from 'antd';
 import styles from '/static/styles/index.less';
 const { TabPane } = Tabs;
+import { connect } from 'react-redux';
+import { showlogin, setUserInfo } from '../redux/actions';
 function callback(key) {
   console.log(key);
 }
 function onChange(a, b, c) {
     console.log(a, b, c);
 }
-
+@connect(state =>
+    ({
+        visibilityFilter: state.visibilityFilter,
+        todos: state.todos,
+        userinfo: state.userinfo
+    }),
+    (dispatch) => ({
+        setUserInfo (user) {
+          dispatch(setUserInfo(user))
+        },
+        showlogin (bollean) {
+            dispatch(showlogin(bollean))
+        }
+    })
+)
 export default class Index extends Component {
 	constructor(props) {
         super(props);
+    }
+    componentDidMount () {
     }
     static async getInitialProps({ req }) {
         const timestamp = Math.floor(new Date().getTime()/1000);
@@ -66,8 +84,6 @@ export default class Index extends Component {
             makeit: jsondata.data.columns[0].id,
             notesx: jsondata.data.notes,
         }
-    }
-    componentDidMount () {
     }
     newsdetail = (obj, e) => {
         Router.push(

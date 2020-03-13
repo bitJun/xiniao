@@ -34,7 +34,7 @@ axios.interceptors.request.use(
             window.localStorage.getItem('token')
         ) {
             config.headers.token = `${window.localStorage.getItem('token')}`;
-				}
+        }
         return config;
     },
     err => {

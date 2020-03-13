@@ -19,6 +19,7 @@ import {
     branchRecommendv2,
     seov2
 } from '../../http/getRes';
+import { connect } from 'react-redux';
 import styles from '/static/styles/class/index.less';
 const { TabPane } = Tabs;
 const params = {
@@ -36,6 +37,13 @@ const optionss = {
     pagesize: 18,
     timestamp: ''
 }
+@connect(state =>
+    ({
+        visibilityFilter: state.visibilityFilter,
+        todos: state.todos,
+        userinfo: state.userinfo
+    })
+)
 export default class Class extends Component{
     constructor(props) {
         super(props);
@@ -91,6 +99,9 @@ export default class Class extends Component{
             activeName2
         }
     }
+    componentDidMount () {
+        // console.log('props', this.props);
+    }
     changePlates (key) {
         const timestamp = Math.floor(new Date().getTime()/1000);
         params.timestamp = timestamp;
@@ -135,8 +146,6 @@ export default class Class extends Component{
                 })
             })
     }
-    componentDidMount() {
-    }
     render () {
         const {
             taglists,
@@ -144,9 +153,6 @@ export default class Class extends Component{
             plates,
             len
         } = this.state;
-        console.log('params', params);
-        console.log('optionss', optionss);
-        console.log('menulist', menulist);
         return (
             <div className={styles['class_view']}>
                 <Head

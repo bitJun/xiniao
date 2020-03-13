@@ -6,145 +6,60 @@ import {
     Dropdown,
     Modal,
     Form,
-    Input,
-    Tooltip,
-    Icon,
-    Cascader,
-    Select,
-    Row,
-    Col,
-    Checkbox,
-    Button,
-    AutoComplete,
 } from 'antd';
-import {
-    phoneLogin,
-    loginphone
-} from '../http/getRes';
+import MobileLogin from './MobileLogin';
+import { connect } from 'react-redux';
+import { setUserInfo, showlogin } from '../redux/actions';
+import store from '../redux/store';
 import styles from '../static/styles/components/TopBar.less';
-class MobileLogin extends Component {
+const PhoneLogin = Form.create({ name: 'normal_login' })(MobileLogin);
+@connect(state =>
+    ({
+        visibilityFilter: state.visibilityFilter,
+        todos: state.todos,
+        userinfo: state.userinfo,
+        loginModal: state.loginModal
+    }),
+    (dispatch) => ({
+        setUserInfo (user) {
+          dispatch(setUserInfo(user))
+        },
+        showlogin (bollean) {
+            dispatch(showlogin(bollean))
+        }
+    })
+)
+
+export default class TopBar extends Component {
     constructor (props) {
         super(props);
-        console.log('props', props);
         this.state = {
-            btnText: '获取验证码',
-            timer: 60,
-            flag: true,
+            token: null,
+            avatar_url:  null,
+            visable: props.loginModal,
+            isPhoneLogin: false,
+            src: `https://open.weixin.qq.com/connect/qrconnect?appid=wxd4cd10786301628d&redirect_uri=https%3a%2f%2fwww.xiniaogongkao.com/&response_type=code&scope=snsapi_login#wechat_redirect`,
         }
+        store.subscribe(() => {
+            const state = store.getState();
+            const { loginModal, userinfo } = state;
+            this.setState({
+                token: userinfo.token || null,
+                avatar_url:  userinfo.avatar_url || null,
+                visable: loginModal
+            })
+        })
     }
     componentDidMount () {
-        console.log('this', this);
-    }
-    handleSubmit = e => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-            }
-        });
-    };
-    getCode = (e) => {
-        const timestamp = Math.floor(new Date().getTime()/1000);
-        const { form } = this.props;
-        let phone = form.getFieldValue('phone');
-        let siv = setInterval(() => {
-            let timer = this.state.timer - 1
-            this.setState({
-                timer: timer,
-                btnText: `(${this.state.timer}s)`,
-                disabled: true
-            }, () => {
-                if (this.state.timer == 0) {
-                    this.setState({
-                        timer: 60,
-                        btnText: '获取验证码',
-                        flag: true,
-                        disabled: false
-                    })
-                    clearInterval(siv);
-                }
-            });
-        }, 1000)
-        // const params = {
-        //     phone: this.ruleForm.phone,
-        //     timestamp: timestamp
-        // }
-    }
-    render() {
-        const formItemLayout = {
-            labelCol: {
-                sm: { span: 6 },
-            },
-            wrapperCol: {
-                sm: { span: 16 },
-            },
-        };
-        const { getFieldDecorator } = this.props.form;
-        const style={
-            position: 'relative',
-            left: '50%',
-            top: '150px',
-            height: '120px',
-            transform: 'translateX(-50%)',
-        };
-        const IconStyle = {
-            height: '40px',
-            padding: '8px',
-            verticalAlign: 'middle',
-            marginLeft: '2px'
-        }
-        const {
-            btnText
-        } = this.state;
-        return (
-            <Form {...formItemLayout} onSubmit={this.handleSubmit} style={style}>
-                <Form.Item label={<img style={IconStyle} src="/static/images/icon_input_phone.png"></img>}>
-                    {
-                        getFieldDecorator('phone', {
-                            rules: [{ required: true, message: '请输入正确的手机号' }],
-                        })
-                        (
-                            <Input style={{ width: '100%' }} />
-                        )
-                    }
-                </Form.Item>
-                <Form.Item label={<img style={IconStyle} src="/static/images/icon_input_code.png"></img>}>
-                    <Row gutter={9}>
-                        <Col span={16}>
-                            {
-                                getFieldDecorator('captcha', {
-                                    rules: [{ required: true, message: 'Please input the captcha you got!' }],
-                                })
-                                (
-                                    <Input />
-                                )
-                            }
-                        </Col>
-                        <Col span={6}>
-                            <Button onClick={this.getCode.bind(this)}>{btnText}</Button>
-                        </Col>
-                    </Row>
-                </Form.Item>
-            </Form>
-        );
-    }
-}
-const PhoneLogin = Form.create({ name: 'normal_login' })(MobileLogin);
-export default class Tuangou extends Component {
-    constructor (props) {
-        super(props);
-        let token = null;
-        let avatar_url = null;
-        if (typeof window == 'object') {
-            token = localStorage.getItem('token');
-            avatar_url = localStorage.getItem('avatar_url');
-        }
-        this.state = {
-            token,
-            avatar_url,
-            visable: false,
-            isPhoneLogin: false,
-            src: `https://open.weixin.qq.com/connect/qrconnect?appid=wxd4cd10786301628d&redirect_uri=https%3a%2f%2fwww.xiniaogongkao.com/&response_type=code&scope=snsapi_login#wechat_redirect`
-        }
+        const { userinfo } = this.props;
+        const { loginModal } = this.props;
+        console.log(store.getState())
+        const { avatar_url, token } = userinfo;
+        this.setState({
+            avatar_url: avatar_url || null,
+            token: token || null,
+            visable: loginModal
+        })
     }
     menu () {
         return (
@@ -173,14 +88,10 @@ export default class Tuangou extends Component {
         )
     }
     handleOk = (e) => {
-        this.setState({
-            visable: false,
-        });
+        this.props.showlogin(false);
     };
     goLogin = (e) => {
-        this.setState({
-            visable: true,
-        });
+        this.props.showlogin(true);
     }
     phoneLogin = (e) => {
         this.setState({
@@ -191,9 +102,6 @@ export default class Tuangou extends Component {
         this.setState({
             isPhoneLogin: false
         })
-    }
-    onChange = (e) => {
-        console.log(`checked = ${e.target.checked}`);
     }
     render () {
         const {
@@ -242,11 +150,6 @@ export default class Tuangou extends Component {
                                 <div>
                                     <img className={styles['xiniao_login_logo']} src="/static/images/icon_login.png" alt="" />
                                     <PhoneLogin />
-                                    <div className={styles['xiniao_login_xieyi']}>
-                                        <Checkbox className={styles['xiniao_login_xieyi_checkbox']} onChange={this.onChange.bind(this)}>登录即代表同意</Checkbox>
-                                        <span>《犀鸟公考用户协议》</span>
-                                        <div className={styles['xiniao_login_xieyi_submit']}>登录</div>
-                                    </div>
                                     <div className={styles['xiniao_login_weixinLogin']} onClick={this.weLogin.bind(this)}>微信登录</div>
                                 </div>
                             )
