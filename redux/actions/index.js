@@ -1,43 +1,29 @@
-import { actionTypes } from "./actionTypes";
+export const ADD_TODO = 'ADD_TODO';
+export const TOGGLE_TODO = 'TOGGLE_TODO';
+export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
-export function failure(error) {
-    return {
-        type: actionTypes.FAILURE,
-        error
-    };
+/*
+ * 其它的常量
+ */
+
+export const VisibilityFilters = {
+    SHOW_ALL: 'SHOW_ALL',
+    SHOW_COMPLETED: 'SHOW_COMPLETED',
+    SHOW_ACTIVE: 'SHOW_ACTIVE'
 }
 
-export function increment() {
-    return { type: actionTypes.INCREMENT };
+/*
+ * action 创建函数
+ */
+
+export function addTodo(text) {
+    return { type: ADD_TODO, text }
 }
 
-export function decrement() {
-    return { type: actionTypes.DECREMENT };
+export function toggleTodo(index) {
+    return { type: TOGGLE_TODO, index }
 }
 
-export function reset() {
-    return { type: actionTypes.RESET };
-}
-
-export function loadData() {
-    return { type: actionTypes.LOAD_DATA };
-}
-
-export function loadDataSuccess(data) {
-    return {
-        type: actionTypes.LOAD_DATA_SUCCESS,
-        data
-    };
-}
-
-export function startClock() {
-    return { type: actionTypes.START_CLOCK };
-}
-
-export function tickClock(isServer) {
-    return {
-        type: actionTypes.TICK_CLOCK,
-        light: !isServer,
-        ts: Date.now()
-    };
+export function setVisibilityFilter(filter) {
+    return { type: SET_VISIBILITY_FILTER, filter }
 }

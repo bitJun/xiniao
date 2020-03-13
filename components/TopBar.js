@@ -22,23 +22,18 @@ import {
     loginphone
 } from '../http/getRes';
 import styles from '../static/styles/components/TopBar.less';
-
-function loginOut () {
-    if (typeof window == 'object') {
-        localStorage.clear();
-        Router.push({
-            pathname: '/'
-        })
-    }
-}
 class MobileLogin extends Component {
     constructor (props) {
         super(props);
+        console.log('props', props);
         this.state = {
             btnText: '获取验证码',
             timer: 60,
             flag: true,
         }
+    }
+    componentDidMount () {
+        console.log('this', this);
     }
     handleSubmit = e => {
         e.preventDefault();

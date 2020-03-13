@@ -31,6 +31,7 @@ function callback(key) {
 function onChange(a, b, c) {
     console.log(a, b, c);
 }
+
 export default class Index extends Component {
 	constructor(props) {
         super(props);

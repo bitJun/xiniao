@@ -1,54 +1,48 @@
-import { actionTypes } from "../actions/actionTypes";
+import { combineReducers } from 'redux';
+import {
+    ADD_TODO,
+    TOGGLE_TODO,
+    SET_VISIBILITY_FILTER,
+    VisibilityFilters
+} from '../actions';
+const { SHOW_ALL } = VisibilityFilters;
 
-export const exampleInitialState = {
-    count: 0,
-    error: false,
-    lastUpdate: 0,
-    light: false,
-    placeholderData: null
-};
-
-function reducer(state = exampleInitialState, action) {
+function visibilityFilter(state = SHOW_ALL, action) {
     switch (action.type) {
-        case actionTypes.FAILURE:
-        return {
-            ...state,
-            ...{ error: action.error }
-        };
-
-        case actionTypes.INCREMENT:
-        return {
-            ...state,
-            ...{ count: state.count + 1 }
-        };
-
-        case actionTypes.DECREMENT:
-        return {
-            ...state,
-            ...{ count: state.count - 1 }
-        };
-
-        case actionTypes.RESET:
-        return {
-            ...state,
-            ...{ count: exampleInitialState.count }
-        };
-
-        case actionTypes.LOAD_DATA_SUCCESS:
-        return {
-            ...state,
-            ...{ placeholderData: action.data }
-        };
-
-        case actionTypes.TICK_CLOCK:
-        return {
-            ...state,
-            ...{ lastUpdate: action.ts, light: !!action.light }
-        };
-
+        case SET_VISIBILITY_FILTER:
+        return action.filter
         default:
-        return state;
+        return state
     }
 }
 
-export default reducer;
+function todos(state = [], action) {
+    switch (action.type) {
+        case ADD_TODO:
+        return [
+            ...state,
+            {
+            text: action.text,
+            completed: false
+            }
+        ]
+        case TOGGLE_TODO:
+        return state.map((todo, index) => {
+            if (index === action.index) {
+            return Object.assign({}, todo, {
+                completed: !todo.completed
+            })
+            }
+            return todo
+        })
+        default:
+        return state
+    }
+}
+
+const todoApp = combineReducers({
+    visibilityFilter,
+    todos
+})
+
+export default todoApp
